@@ -1,0 +1,11 @@
+#!/usr/bin/env ansible-playbook
+- hosts: localhost
+  tasks:
+    - name: Load queries.json
+      uri:
+        url: https://raw.githubusercontent.com/rdo-infra/queries/main/build/queries.json
+        method: GET
+        return_content: yes
+        status_code: 200
+        body_format: json
+      register: data
