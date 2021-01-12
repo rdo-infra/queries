@@ -5,7 +5,7 @@
       uri:
         url: https://raw.githubusercontent.com/rdo-infra/queries/main/build/queries.json
         method: GET
-        return_content: yes
+        return_content: true
         status_code: 200
         body_format: json
       register: data
