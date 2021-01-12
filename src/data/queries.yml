@@ -1,0 +1,19 @@
+# Keep all keys sorted (enforced via CI)
+queries:
+  java_io_exception_remote_call:
+    pattern:
+      - java.io.IOException
+      - Remote call on
+      - failed
+    suppress-graph: true
+    tags:
+      - console.html
+      - job-output.txt
+    url: https://bugs.launchpad.net/openstack-ci/+bug/1260654
+  overcloud_create_failed:
+    name: "Overcloud stack: FAILED."
+    pattern: "Stack overcloud CREATE_FAILED"
+  # from https://opendev.org/opendev/elastic-recheck/src/branch/master/queries/1260654.yaml
+  timeout_re:
+    pattern: Killed\s+timeout -s 9
+    regex: true
