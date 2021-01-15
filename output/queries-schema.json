@@ -1,0 +1,112 @@
+{
+  "title": "Queries",
+  "type": "object",
+  "properties": {
+    "queries": {
+      "title": "Queries",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Query"
+      }
+    }
+  },
+  "required": [
+    "queries"
+  ],
+  "definitions": {
+    "Query": {
+      "title": "Query",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "pattern": {
+          "title": "Pattern",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "category": {
+          "title": "Category",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2083,
+                "format": "uri"
+              }
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2083,
+              "format": "uri"
+            }
+          ]
+        },
+        "tags": {
+          "title": "Tags",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "suppress-graph": {
+          "title": "Suppress-Graph",
+          "description": "Used for elastic-recheck",
+          "type": "boolean"
+        },
+        "regex": {
+          "title": "Regex",
+          "default": false,
+          "type": "boolean"
+        },
+        "multiline": {
+          "title": "Multiline",
+          "default": false,
+          "type": "boolean"
+        },
+        "files": {
+          "title": "Files",
+          "description": "List of glob patterns, narrows down searching",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "pattern"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
