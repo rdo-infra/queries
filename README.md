@@ -4,22 +4,10 @@ Hosts reusable log queries which are built into a single queries.json file.
 
 ## Query database structure
 
-```yaml
-queries:
-  pip-no-matching-distribution:  # also known as query "id", (sort key)
-    pattern: "ERROR: No matching distribution found for"  # required, can be list!
-    # optionals:
-    name: "PIP failed to find package"  # optional (aka 'reason'), id is used instead
-    files: []  # list of glob patterns, narrows down searching
-    regex: false  # optional, default is false
-    url: ... # str or list[str], issue links to lp, bz,...
-    category: ... # see Categories
-    tags: []  # see Tags
-    suppress-graph: false  # used for elastic-recheck
-    # uncommon fields
-    multiline: true  # https://opendev.org/openstack/ansible-role-collect-logs/src/branch/master/vars/sova-patterns.yml#L47
-  another-query-name: ...
-```
+Queries are defined using the data model from src/model.py which builds
+a JSON Validation schema, making easy to validate the file.
+
+One example of file can be seen at [queries-example.yml](https://github.com/rdo-infra/queries/blob/main/src/data/queries-example.yml)
 
 Both [elastic-search](https://www.elastic.co/guide/en/elasticsearch/reference/current/term-level-queries.html) and [artcl](https://opendev.org/openstack/ansible-role-collect-logs) can make use of `regex` searches.
 

@@ -28,6 +28,7 @@ jobs:
           - ubuntu-20.04
         env:
           - TOXENV: lint
+          - TOXENV: py38
     env:
       TOX_PARALLEL_NO_SPINNER: 1
       FORCE_COLOR: 1
